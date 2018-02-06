@@ -9,6 +9,7 @@ module.exports = Object.assign(commonParams, {
     },
     devtool: '#source-map',
     plugins: [
+        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
     ],
     devServer: {
