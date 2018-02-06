@@ -3,16 +3,16 @@ import React from "react";
 export default (props) => (
     <React.Fragment>
         <h1>Hello, {props.name}!</h1>
-        <Magic magic="magic"/>
+        <Clock />
     </React.Fragment>
 
 );
 
-class Magic extends React.Component {
+class Clock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentNumber: 0
+            currentTime: 0
         };
 
         this.tick = this.tick.bind(this);
@@ -23,12 +23,15 @@ class Magic extends React.Component {
     componentWillUnmount() {
         clearInterval(this.intervalId);
     }
+    getTime() {
+        return new Date().toTimeString().substr(0, 8);
+    }
     tick() {
-        this.setState((prevState) => ({currentNumber: prevState.currentNumber + 1}))
+        this.setState({currentTime: this.getTime()})
     }
     render() {
-        return <span>
-            {this.state.currentNumber}
-        </span>
+        return <h2>
+            Current time is {this.state.currentTime}
+        </h2>
     }
 }
