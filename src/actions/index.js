@@ -10,3 +10,7 @@ export const removeTodo = id => ({
     type: REMOVE_TODO,
     id
 });
+
+export const addAsyncTodo = val => dispatch => {
+    setTimeout(() => {dispatch(addTodo(val))}, 5000)
+};

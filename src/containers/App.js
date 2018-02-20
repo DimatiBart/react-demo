@@ -3,11 +3,11 @@ import {connect} from "react-redux";
 
 import TodoList from "../components/todolist/index";
 import AddTodo from "../components/addTodo/index";
-import {addTodo, removeTodo} from "../actions/";
+import {addTodo, removeTodo, addAsyncTodo} from "../actions/";
 
 const App = props => (
     <div>
-        <AddTodo addTodo={props.addTodo}/>
+        <AddTodo addTodo={props.addTodo} addAsyncTodo={props.addAsyncTodo}/>
         <TodoList todos={props.todos} removeTodo={props.removeTodo}/>
     </div>
 );
@@ -22,6 +22,9 @@ const mapDispatchToProps = dispatch => ({
     },
     removeTodo(id) {
         dispatch(removeTodo(id))
+    },
+    addAsyncTodo(text) {
+        dispatch(addAsyncTodo(text))
     }
 });
 
