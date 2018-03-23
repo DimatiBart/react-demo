@@ -19,7 +19,7 @@ export default class App extends React.Component {
                     <Route exact path="/" render={() => (
                         <div> Hello, boys and girls </div>
                     )}/>
-                    {/*<Route path="/:id" component={DisplayID}/>*/}
+                    <Route path="/:id" component={DisplayID}/>
                     <Route path="/location" component={CurrentLocation}/>
                     <Route path="/time" component={CurrentTime}/>
                     {/*<Route path="/zayac/" component={Rabbit}/>*/}

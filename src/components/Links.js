@@ -5,7 +5,7 @@ export default (props) => (
     <div>
         <p>Navigating with Link component:</p>
         <Link className="hoho" to="/">Go to root</Link>
-        {/*<Link className="hoho" to="/123">Go to id root</Link>*/}
+        <Link className="hoho" to="/123">Go to id root</Link>
         <Link className="hoho" to="/location">Go to Location</Link>
         <Link className="hoho" to="/time">Go to Time</Link>
         {/*<Link className="hoho" to="/zayac">Go to Zayac</Link>*/}
