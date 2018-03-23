@@ -1,4 +1,5 @@
-import restify from "restify";
+import path from 'path'
+import Express from 'express'
 import fetch from "isomorphic-fetch";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
@@ -14,11 +15,11 @@ import renderPage from "./page";
 process.title = "ssr-server";
 global.fetch = fetch;
 
-let server = restify.createServer();
+const app = Express();
+const port = 3000;
 
-server.listen(1345, function() {
-    console.log('%s listening at %s', server.name, server.url);
-});
+app.use('/dest', Express.static('dest'));
+
 
 const renderApp = (url) => {
     let context = {};
@@ -31,8 +32,10 @@ const renderApp = (url) => {
     )
 };
 
-server.get(/.?/, (req, res) => {
-    console.log(req.path());
-    let renderedApp = renderApp(req.path());
-    res.sendRaw( renderPage(renderedApp) );
+app.use((req, res) => {
+    console.log(req.originalUrl);
+    let renderedApp = renderApp(req.originalUrl);
+    res.send(renderPage(renderedApp));
 });
+
+app.listen(port);
