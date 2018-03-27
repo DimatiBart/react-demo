@@ -1,4 +1,4 @@
-export default (App) => (
+export default (App, state) => (
     `<!doctype html>
     <html lang="en">
     <head>
@@ -17,6 +17,9 @@ export default (App) => (
     </head>
     <body>
     <div id="app">${App}</div>
+    <script>
+        window.__PRELOADED_STATE__ = ${JSON.stringify(state).replace(/</g, '\\u003c')}
+    </script>
     </body>
     </html>`
 )
